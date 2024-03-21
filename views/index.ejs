@@ -1,0 +1,26 @@
+<%- include("partials/header.ejs") %>
+
+  <h1>Some Blog</h1>
+  <a href="/add" class="add-button">Add New Post</a>
+    <div class="container">
+    <% postList.forEach((post, index) => { %>
+      <div class="post">
+        <h2><%= post.title %></h2>
+        <hr>
+        <% const formatted = post.body.split("\n"); %>
+        <% formatted.forEach((paragraph) => { %>
+          <p id="post-body"><%= paragraph %></p>
+        <% }) %>
+        <div class="post-buttons">
+          <a href="/edit/<%= index %>">Edit</a>
+          <% if(post.updated) { %>
+            <p>Updated <%= post.dateCreated %></p>
+          <% } else { %>
+            <p><%= post.dateCreated %></p>
+          <% } %>
+        </div>     
+      </div>
+    <% }); %>
+  </div>
+
+<%- include("partials/footer.ejs") %>
