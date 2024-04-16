@@ -1,9 +1,11 @@
 <%- include("partials/header.ejs") %>
+<%- include("partials/navbar.ejs") %>
 
+<main>
   <h1>Some Blog</h1>
   <a href="/add" class="add-button">Add New Post</a>
     <div class="container">
-    <% postList.forEach((post, index) => { %>
+    <% postList.forEach((post) => { %>
       <div class="post">
         <h2><%= post.title %></h2>
         <hr>
@@ -12,15 +14,16 @@
           <p id="post-body"><%= paragraph %></p>
         <% }) %>
         <div class="post-buttons">
-          <a href="/edit/<%= index %>">Edit</a>
+          <a href="/edit/<%= post.id %>">Edit</a>
           <% if(post.updated) { %>
-            <p>Updated <%= post.dateCreated %></p>
+            <p>Updated <%= post.date_created %></p>
           <% } else { %>
-            <p><%= post.dateCreated %></p>
+            <p><%= post.date_created %></p>
           <% } %>
         </div>     
       </div>
     <% }); %>
   </div>
+</main>
 
 <%- include("partials/footer.ejs") %>

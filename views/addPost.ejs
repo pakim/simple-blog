@@ -1,5 +1,7 @@
 <%- include("partials/header.ejs") %>
+<%- include("partials/navbar.ejs") %>
 
+<main>
   <h1>Add New Post</h1>
   <div class="form-container">
     <form action="/newPost" class="add-post" method="post">
@@ -11,5 +13,6 @@
       <a href="/">Cancel</a>
     </form>
   </div>
+</main>
 
 <%- include("partials/footer.ejs") %>

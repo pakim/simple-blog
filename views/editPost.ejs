@@ -1,18 +1,23 @@
 <%- include("partials/header.ejs") %>
+<%- include("partials/navbar.ejs") %>
 
+<main>
   <h1>Edit Post</h1>
-  <div class="form-container">
-    <form action="/update/<%= id %>" class="update-post" method="post">
+  <div class="form-container edit">
+    <form action="/update/<%= post.id %>" class="update-post" method="post">
       <label for="title">Title</label>
-      <input type="text" id="title" name="title" value="<%= postList[id].title %>">
+      <input type="text" id="title" name="title" value="<%= post.title %>">
       <label for="body">Text</label>
-      <textarea id="body" name="body"><%= postList[id].body %></textarea>
+      <textarea id="body" name="body"><%= post.body %></textarea>
       <input type="submit" value="Update">
-      <div class="edit-buttons">
-        <a href="/delete/<%= id %>" id="delete">Delete</a>
-        <a href="/">Cancel</a>
-      </div>
     </form>
+    <div class="edit-buttons">
+      <form action="/delete/<%= post.id %>" id="delete-form" method="post">
+        <button type="submit" id="delete" form="delete-form">Delete</button>
+      </form>
+      <a href="/">Cancel</a>
+    </div>
   </div>
+</main>
 
 <%- include("partials/footer.ejs") %>
